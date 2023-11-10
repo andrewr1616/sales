@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      #result {
+        text-align: center;
+        font-size: 24px;
+        margin-top: 10px;
+      }
+      #sum {
+        text-align: center;
+        font-size: 24px;
+        margin-top: 10px;
+      }
+      body {
+        background: linear-gradient(
+          to left,
+          rgb(255, 141, 20),
+          rgb(255, 179, 0),
+          rgb(255, 204, 0),
+          rgb(255, 221, 0)
+        );
+      }
+      h1 {
+        text-align: center;
+        font-size: 30px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 25px;
+      }
+      #submitBtn {
+        background-color: blue;
+        color: white;
+        border: none;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sales Calculator</h1>
+    <form id="calculatorForm">
+      <label for="ifpInput">IFP:</label>
+      <input type="number" id="ifpInput" required />
+      <label for="ancillaryInput">Ancillary:</label>
+      <input type="number" id="ancillaryInput" required />
+      <label for="stInput">ST:</label>
+      <input type="number" id="stInput" required />
+      <label for="gapInput">Gap:</label>
+      <input type="number" id="gapInput" required />
+      <input type="submit" id="submitBtn" value="Submit" />
+    </form>
+    <div id="result"></div>
+    <div id="sum"></div>
+    <script>
+      document
+        .getElementById("calculatorForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var ifp = parseFloat(document.getElementById("ifpInput").value);
+          var ancillary = parseFloat(
+            document.getElementById("ancillaryInput").value
+          );
+          let st = parseFloat(document.getElementById("stInput").value);
+          let gap = parseFloat(document.getElementById("gapInput").value);
+          let ifpTotal = ifp * 15;
+          let ancillaryTotal = ancillary * 10;
+          let stTotal = st * 8;
+          let gapTotal = gap * 10;
+          let resultDiv = document.getElementById("result");
+          resultDiv.innerHTML =
+            "IFP Total: " +
+            ifpTotal +
+            "<br>" +
+            "Ancillary Total: " +
+            ancillaryTotal +
+            "<br>" +
+            "ST Total: " +
+            stTotal +
+            "<br>" +
+            "Gap Total: " +
+            gapTotal;
+          var sum = ifpTotal + ancillaryTotal + stTotal + gapTotal;
+          var sumDiv = document.getElementById("sum");
+          sumDiv.innerHTML = "Sum: " + sum;
+        });
+    </script>
+  </body>
+</html>
